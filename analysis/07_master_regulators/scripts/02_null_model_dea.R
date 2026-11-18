@@ -10,7 +10,7 @@
 #            with the exact design formula used in the base script for each
 #            cohort, and keep the Wald "stat" column of each run. Output: one
 #            genes x 1000 matrix per combination, saved under
-#            results/null_model_dea/<COHORT>_<REGION>_<sex>_null_model_DEA.tsv
+#            results/07_master_regulators/null_model_dea/<COHORT>_<REGION>_<sex>_null_model_DEA.tsv
 
 time0 <- Sys.time()
 
@@ -27,9 +27,11 @@ SEED     <- 10
 N_PERM   <- as.integer(Sys.getenv("NULL_MODEL_NPERM", "1000"))
 N_CORES  <- as.integer(Sys.getenv("NULL_MODEL_CORES", "60"))
 
-mayo_dir   <- path.expand("~/ad_sex_differences/results/0_preprocess")
-rosmap_dir <- path.expand("~/ad_sex_differences/results/0_preprocess_rosmap")
-out_dir    <- path.expand("~/ad_sex_differences/results/null_model_dea")
+source(file.path(Sys.getenv("ADSEX_ROOT", "."), "config", "paths.R"))
+mod_dir      <- module_results("07_master_regulators")
+mayo_dir   <- file.path(mod_dir, "0_preprocess")
+rosmap_dir <- file.path(mod_dir, "0_preprocess_rosmap")
+out_dir    <- file.path(mod_dir, "null_model_dea")
 
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 

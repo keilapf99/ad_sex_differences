@@ -16,9 +16,11 @@
 # - Transcriptional regulatory networks
 
 ####################################################################
-REGULATORS="$HOME/ad_sex_differences/data/regulators.txt"
-INPUT_DIR="$HOME/ad_sex_differences/data/coexpr_networks"
-OUTPUT_DIR="$HOME/ad_sex_differences/data/trn_networks"
+source "${ADSEX_ROOT:-.}/config/paths.sh"
+
+REGULATORS="$DATA_DIR/regulators.txt"
+INPUT_DIR="$DATA_DIR/coexpr_networks"
+OUTPUT_DIR="$DATA_DIR/trn_networks"
 
 # Regulator column
 REG_COL=1

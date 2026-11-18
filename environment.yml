@@ -1,0 +1,19 @@
+# Conda environment for the whole project.
+# Versions marked below were the ones used for 07_master_regulators.
+# Add your module's dependencies here.
+name: ad-sex
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - r-base=4.5
+  - r-dplyr
+  - r-tidyr
+  - r-stringr
+  - r-tibble
+  - r-ggplot2
+  - bioconductor-deseq2   # 1.50.2
+  - bioconductor-viper    # 1.44.0
+  - bioconductor-noiseq
+  - bioconductor-edaseq
+  - bioconductor-sva

@@ -1,6 +1,9 @@
-# Folders
-data/
+# Data and results are never committed (AMP-AD data use agreement)
+data/*
+!data/README.md
 results/
+*.rds
+*.RData
 
 # OS
 .DS_Store

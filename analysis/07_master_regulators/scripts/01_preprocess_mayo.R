@@ -6,7 +6,7 @@
 # Objective: Adapt the MAYO raw count matrices (data/raw_counts/MAYO_rawcounts)
 #            into the same format used in expr_diff_base_mayo.R right before
 #            differential expression, and save the resulting counts + metadata
-#            in results/0_preprocess for downstream analysis.
+#            in results/07_master_regulators/0_preprocess for downstream analysis.
 
 time <- Sys.time()
 
@@ -19,8 +19,10 @@ suppressPackageStartupMessages({
 
 # 0. Paths --------------------------------------------------------------------
 
-raw_dir <- path.expand("~/ad_sex_differences/data/raw_counts/MAYO_rawcounts")
-out_dir <- path.expand("~/ad_sex_differences/results/0_preprocess")
+source(file.path(Sys.getenv("ADSEX_ROOT", "."), "config", "paths.R"))
+mod_dir      <- module_results("07_master_regulators")
+raw_dir <- file.path(DATA_DIR, "raw_counts", "MAYO_rawcounts")
+out_dir <- file.path(mod_dir, "0_preprocess")
 
 condition_column <- "diagnosis"
 

@@ -9,7 +9,7 @@
 #            - Molecular signature: full differential expression table
 #              (data/full_diff_expr), same "stat" column as before
 #            - Null model: the permutation-based null model built in
-#              null_model_dea.R (results/null_model_dea), replacing the ad-hoc
+#              null_model_dea.R (results/07_master_regulators/null_model_dea), replacing the ad-hoc
 #              name-shuffled nullmodel of the original script
 #            - Regulon: TF-filtered TRN (data/trn_networks), not the raw
 #              ARACNe coexpression network
@@ -23,12 +23,13 @@ suppressPackageStartupMessages(library(viper))
 
 CORES <- as.integer(Sys.getenv("MRA_CORES", "10"))
 
-base_dir     <- path.expand("~/ad_sex_differences")
-counts_dir   <- file.path(base_dir, "data", "counts_tmm", "expression_alzheimer")
-de_dir       <- file.path(base_dir, "data", "full_diff_expr")
-trn_dir      <- file.path(base_dir, "data", "trn_networks")
-nullmodel_dir <- file.path(base_dir, "results", "null_model_dea")
-out_dir      <- file.path(base_dir, "results", "MRA_by_sex")
+source(file.path(Sys.getenv("ADSEX_ROOT", "."), "config", "paths.R"))
+mod_dir      <- module_results("07_master_regulators")
+counts_dir   <- file.path(DATA_DIR, "counts_tmm", "expression_alzheimer")
+de_dir       <- file.path(DATA_DIR, "full_diff_expr")
+trn_dir      <- file.path(DATA_DIR, "trn_networks")
+nullmodel_dir <- file.path(mod_dir, "null_model_dea")
+out_dir      <- file.path(mod_dir, "MRA_by_sex")
 
 dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
